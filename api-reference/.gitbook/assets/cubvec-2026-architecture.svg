@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg viewBox="0 0 680 416" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="cubvec-2026-architecture-title cubvec-2026-architecture-desc" id="cubvec-2026-architecture-root">
+<title id="cubvec-2026-architecture-title">디스크 기반 벡터 인덱스의 계층 구조</title>
+<desc id="cubvec-2026-architecture-desc">SQL 인터페이스부터 옵티마이저와 실행기, 벡터 인덱스 관리, HNSW 알고리즘, 그래프 스토리지와 캐시, CUBRID 저장 엔진까지 여섯 계층으로 나눈 구조이며, 3차년도 작업의 중심인 그래프 스토리지 계층을 강조한다.</desc>
+<defs>
+      <style>@import url('https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&amp;family=Geist:wght@400;500;600&amp;family=Geist+Mono:wght@400;500;600&amp;family=Noto+Serif:ital@0;1&amp;family=Noto+Sans+KR:wght@400;500;600&amp;family=Noto+Serif+KR:wght@400&amp;family=Noto+Sans+TC:wght@400;500;600&amp;family=Noto+Serif+TC:wght@400&amp;display=swap');
+      #cubvec-2026-architecture-root { font-family: Pretendard, 'Noto Sans KR', 'Noto Sans CJK KR', sans-serif; color: #3b4252; }
+      #cubvec-2026-architecture-root .diagram-container { width: 100%; overflow-x: auto; }</style><marker id="cubvec-2026-architecture-arrow" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto"><polygon points="0 0, 8 3, 0 6" fill="#666666"/></marker><marker id="cubvec-2026-architecture-arrow-ink" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto"><polygon points="0 0, 8 3, 0 6" fill="#3b4252"/></marker><marker id="cubvec-2026-architecture-arrow-accent" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto"><polygon points="0 0, 8 3, 0 6" fill="#c62828"/></marker></defs>
+<rect width="100%" height="100%" fill="#fbfaf7"/>
+<text x="16" y="28" fill="#3b4252" font-size="16" font-weight="700" font-family="Pretendard, 'Noto Sans KR', 'Noto Sans CJK KR', sans-serif" text-anchor="start">디스크 기반 벡터 인덱스의 계층 구조</text>
+<text x="60" y="60" fill="#666666" font-size="8" font-weight="400" font-family="'Geist Mono', 'Noto Sans Mono CJK KR', monospace" text-anchor="middle" letter-spacing="0.06em">SQL</text>
+<line x1="60" y1="68" x2="60" y2="348" stroke="#666666" stroke-width="1.2" marker-end="url(#cubvec-2026-architecture-arrow)"/>
+<text x="60" y="368" fill="#666666" font-size="8" font-weight="400" font-family="'Geist Mono', 'Noto Sans Mono CJK KR', monospace" text-anchor="middle" letter-spacing="0.06em">PAGE</text>
+<rect x="88" y="52" width="568" height="312" rx="6" fill="#ffffff" stroke="#3b4252" stroke-width="1"/>
+<line x1="88" y1="104" x2="656" y2="104" stroke="#d8dee9" stroke-width="1"/>
+<line x1="88" y1="156" x2="656" y2="156" stroke="#d8dee9" stroke-width="1"/>
+<line x1="88" y1="208" x2="656" y2="208" stroke="#d8dee9" stroke-width="1"/>
+<line x1="88" y1="260" x2="656" y2="260" stroke="#d8dee9" stroke-width="1"/>
+<line x1="88" y1="312" x2="656" y2="312" stroke="#d8dee9" stroke-width="1"/>
+<rect x="88" y="260" width="568" height="52" fill="#c62828" fill-opacity="0.08" stroke="#c62828" stroke-width="1.2"/>
+<text x="104" y="81.0" fill="#666666" font-size="8" font-weight="500" font-family="'Geist Mono', 'Noto Sans Mono CJK KR', monospace" text-anchor="start" letter-spacing="0.18em">L1</text>
+<text x="136" y="82.0" fill="#3b4252" font-size="12" font-weight="600" font-family="Pretendard, 'Noto Sans KR', 'Noto Sans CJK KR', sans-serif" text-anchor="start">SQL 인터페이스</text>
+<text x="640" y="81.0" fill="#7a7f89" font-size="8" font-weight="400" font-family="'Geist Mono', 'Noto Sans Mono CJK KR', monospace" text-anchor="end">VECTOR · distance fn · CREATE INDEX USING hnsw · COPY</text>
+<text x="104" y="133.0" fill="#666666" font-size="8" font-weight="500" font-family="'Geist Mono', 'Noto Sans Mono CJK KR', monospace" text-anchor="start" letter-spacing="0.18em">L2</text>
+<text x="136" y="134.0" fill="#3b4252" font-size="12" font-weight="600" font-family="Pretendard, 'Noto Sans KR', 'Noto Sans CJK KR', sans-serif" text-anchor="start">옵티마이저 · 실행기</text>
+<text x="640" y="133.0" fill="#7a7f89" font-size="8" font-weight="400" font-family="'Geist Mono', 'Noto Sans Mono CJK KR', monospace" text-anchor="end">vector index scan plan · executor · visibility check</text>
+<text x="104" y="185.0" fill="#666666" font-size="8" font-weight="500" font-family="'Geist Mono', 'Noto Sans Mono CJK KR', monospace" text-anchor="start" letter-spacing="0.18em">L3</text>
+<text x="136" y="186.0" fill="#3b4252" font-size="12" font-weight="600" font-family="Pretendard, 'Noto Sans KR', 'Noto Sans CJK KR', sans-serif" text-anchor="start">벡터 인덱스 관리</text>
+<text x="640" y="185.0" fill="#7a7f89" font-size="8" font-weight="400" font-family="'Geist Mono', 'Noto Sans Mono CJK KR', monospace" text-anchor="end">index type in catalog · build params · statdump stats</text>
+<text x="104" y="237.0" fill="#666666" font-size="8" font-weight="500" font-family="'Geist Mono', 'Noto Sans Mono CJK KR', monospace" text-anchor="start" letter-spacing="0.18em">L4</text>
+<text x="136" y="238.0" fill="#3b4252" font-size="12" font-weight="600" font-family="Pretendard, 'Noto Sans KR', 'Noto Sans CJK KR', sans-serif" text-anchor="start">HNSW 알고리즘</text>
+<text x="640" y="237.0" fill="#7a7f89" font-size="8" font-weight="400" font-family="'Geist Mono', 'Noto Sans Mono CJK KR', monospace" text-anchor="end">search · insert · neighbor repair · int8 prefilter</text>
+<text x="104" y="289.0" fill="#c62828" font-size="8" font-weight="500" font-family="'Geist Mono', 'Noto Sans Mono CJK KR', monospace" text-anchor="start" letter-spacing="0.18em">L5</text>
+<text x="136" y="290.0" fill="#3b4252" font-size="12" font-weight="600" font-family="Pretendard, 'Noto Sans KR', 'Noto Sans CJK KR', sans-serif" text-anchor="start">그래프 스토리지 · 캐시</text>
+<text x="640" y="289.0" fill="#7a7f89" font-size="8" font-weight="400" font-family="'Geist Mono', 'Noto Sans Mono CJK KR', monospace" text-anchor="end">node records on slotted pages · vector / neighbor cache</text>
+<text x="104" y="341.0" fill="#666666" font-size="8" font-weight="500" font-family="'Geist Mono', 'Noto Sans Mono CJK KR', monospace" text-anchor="start" letter-spacing="0.18em">L6</text>
+<text x="136" y="342.0" fill="#3b4252" font-size="12" font-weight="600" font-family="Pretendard, 'Noto Sans KR', 'Noto Sans CJK KR', sans-serif" text-anchor="start">CUBRID 저장 엔진</text>
+<text x="640" y="341.0" fill="#7a7f89" font-size="8" font-weight="400" font-family="'Geist Mono', 'Noto Sans Mono CJK KR', monospace" text-anchor="end">page buffer · log (REDO/UNDO) · MVCC · vacuum</text>
+<text x="16" y="396" fill="#666666" font-size="12" font-weight="500" font-family="Pretendard, 'Noto Sans KR', 'Noto Sans CJK KR', sans-serif" text-anchor="start">3차년도에는 L4–L5를 CUBRID 페이지 위로 옮기고, 그 위에서 L2의 검색 질의와 L6의 트랜잭션·복구 연동을 개발했다.</text>
+</svg>
