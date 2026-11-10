@@ -2,7 +2,7 @@
 
 * [CUBRID 벡터 서치 개발 리포트](README.md)
 
-## 매뉴얼
+## 매뉴얼 <a href="#manual" id="manual"></a>
 
 * [벡터 데이터](manual/vector-data.md)
 * [벡터 연산](manual/vector-operations.md)
@@ -11,7 +11,7 @@
 * [벡터 인덱스 지원](manual/vector-index.md)
 * [변경 이력](manual/revision.md)
 
-## 개발리포트
+## 개발리포트 <a href="#dev-report" id="dev-report"></a>
 
 * [공통](dev-report/common.md)
 * [2025](dev-report/2025.md)
