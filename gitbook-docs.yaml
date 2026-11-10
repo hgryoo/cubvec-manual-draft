@@ -1,0 +1,12 @@
+$schema: https://api.gitbook.com/gitbook-docs.yaml
+site:
+  title: cubvec
+  structure:
+    - type: space
+      key: space-1
+      title: CUBRID VECTOR
+      path: api-reference
+      default: true
+      content:
+        directory: ./api-reference
+        language: ko
