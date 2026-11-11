@@ -26,6 +26,10 @@ pgvector와 같은 절차로 맞추기 위해, 빌드 단계에는 서버 기동
 
 측정 중에는 단계마다 `statdump`의 통계와 perf 프로파일을 함께 모을 수 있다. 통계 항목은 [벡터 인덱스 기반 검색 질의](vector-search-query.md)에 정리했다.
 
+<figure><img src="../../.gitbook/assets/cubvec-2026-b1-procedure.svg" alt="ann-benchmarks 측정 절차"><figcaption><p>그림 1. ann-benchmarks 측정 절차</p></figcaption></figure>
+
+*그림 설명 — 위 줄이 빌드 단계, 아래 줄이 질의 단계다. 빌드 단계에서 붉게 표시한 인덱스 빌드가 빌드 성능을 좌우하고, 서버를 재시작한 뒤 질의 단계로 넘어간다. 질의 단계는 ef_search 값마다 되풀이된다.*
+
 ### 파라미터
 
 `config.yml`의 기본 실행 그룹은 다음과 같다.

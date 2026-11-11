@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>cubvec-2026-v1-ctp</title>
+  <link href="https://fonts.googleapis.com/css2?family=Geist+Mono:wght@400;500;600&family=Noto+Sans+KR:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: Pretendard, 'Noto Sans KR', 'Noto Sans CJK KR', sans-serif; background: #fbfaf7;
+           color: #3b4252; display: flex; justify-content: center; padding: 3rem 2rem; }
+    .frame { max-width: 720px; width: 100%; }
+    .eyebrow { font-family: 'Geist Mono', 'Noto Sans Mono CJK KR', monospace; font-size: 0.66rem;
+               letter-spacing: 0.18em; text-transform: uppercase; color: #666666; margin-bottom: 1rem; }
+    .diagram-container { width: 100%; overflow-x: auto; }
+    svg { width: 100%; min-width: 680px; display: block; }
+  </style>
+</head>
+<body>
+  <div class="frame">
+    <p class="eyebrow">Process · 2026 development report</p>
+    <div class="diagram-container">
+<svg viewBox="0 0 680 296" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="cubvec-2026-v1-ctp-title cubvec-2026-v1-ctp-desc">
+<title id="cubvec-2026-v1-ctp-title">SQL 테스트 케이스와 CI</title>
+<desc id="cubvec-2026-v1-ctp-desc">PR마다 CI가 케이스 SQL을 서버에서 실행하고, 실행 결과를 정답 파일과 바이트 단위로 비교해 같을 때만 통과로 판정한다.</desc>
+<defs><marker id="arrow" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto"><polygon points="0 0, 8 3, 0 6" fill="#666666"/></marker><marker id="arrow-ink" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto"><polygon points="0 0, 8 3, 0 6" fill="#3b4252"/></marker><marker id="arrow-accent" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto"><polygon points="0 0, 8 3, 0 6" fill="#c62828"/></marker></defs>
+<rect width="100%" height="100%" fill="#fbfaf7"/>
+<text x="16" y="28" fill="#3b4252" font-size="16" font-weight="700" font-family="Pretendard, 'Noto Sans KR', 'Noto Sans CJK KR', sans-serif" text-anchor="start">SQL 테스트 케이스와 CI</text>
+<rect x="16" y="48" width="648" height="176" rx="8" fill="none" stroke="#d8dee9" stroke-width="1.2" stroke-dasharray="4,3"/><text x="28" y="68" fill="#666666" font-size="12" font-weight="600" font-family="Pretendard, 'Noto Sans KR', 'Noto Sans CJK KR', sans-serif" text-anchor="start">PR마다 CI (test_cubvec)</text>
+<line x1="192" y1="106" x2="232" y2="106" stroke="#666666" stroke-width="1.2" marker-end="url(#arrow)"/>
+<line x1="368" y1="106" x2="408" y2="106" stroke="#666666" stroke-width="1.2" marker-end="url(#arrow)"/>
+<path d="M 464,128 L 464,160 Q 464,168 472,168 L 496,168" fill="none" stroke="#666666" stroke-width="1.2" marker-end="url(#arrow)"/>
+<line x1="192" y1="192" x2="496" y2="192" stroke="#666666" stroke-width="1.2" marker-end="url(#arrow)"/>
+<rect x="40" y="84" width="152" height="44" rx="6" fill="#fbfaf7"/><rect x="40" y="84" width="152" height="44" rx="6" fill="#ffffff" stroke="#3b4252" stroke-width="1"/><text x="116.0" y="104.0" fill="#3b4252" font-size="12" font-weight="600" font-family="Pretendard, 'Noto Sans KR', 'Noto Sans CJK KR', sans-serif" text-anchor="middle">cases/*.sql</text><text x="116.0" y="119.0" fill="#666666" font-size="8" font-weight="400" font-family="'Geist Mono', 'Noto Sans Mono CJK KR', monospace" text-anchor="middle">SQL test case</text>
+<rect x="40" y="170" width="152" height="44" rx="6" fill="#fbfaf7"/><rect x="40" y="170" width="152" height="44" rx="6" fill="#ffffff" stroke="#3b4252" stroke-width="1"/><text x="116.0" y="190.0" fill="#3b4252" font-size="12" font-weight="600" font-family="Pretendard, 'Noto Sans KR', 'Noto Sans CJK KR', sans-serif" text-anchor="middle">answers/*.answer</text><text x="116.0" y="205.0" fill="#666666" font-size="8" font-weight="400" font-family="'Geist Mono', 'Noto Sans Mono CJK KR', monospace" text-anchor="middle">expected output</text>
+<rect x="232" y="84" width="136" height="44" rx="6" fill="#fbfaf7"/><rect x="232" y="84" width="136" height="44" rx="6" fill="#ffffff" stroke="#3b4252" stroke-width="1"/><text x="300.0" y="104.0" fill="#3b4252" font-size="12" font-weight="600" font-family="Pretendard, 'Noto Sans KR', 'Noto Sans CJK KR', sans-serif" text-anchor="middle">CTP 실행</text><text x="300.0" y="119.0" fill="#666666" font-size="8" font-weight="400" font-family="'Geist Mono', 'Noto Sans Mono CJK KR', monospace" text-anchor="middle">run against the server</text>
+<rect x="408" y="84" width="112" height="44" rx="6" fill="#fbfaf7"/><rect x="408" y="84" width="112" height="44" rx="6" fill="#ffffff" stroke="#3b4252" stroke-width="1"/><text x="464.0" y="104.0" fill="#3b4252" font-size="12" font-weight="600" font-family="Pretendard, 'Noto Sans KR', 'Noto Sans CJK KR', sans-serif" text-anchor="middle">실행 결과</text><text x="464.0" y="119.0" fill="#666666" font-size="8" font-weight="400" font-family="'Geist Mono', 'Noto Sans Mono CJK KR', monospace" text-anchor="middle">*.result</text>
+<rect x="496" y="156" width="152" height="48" rx="6" fill="#fbfaf7"/><rect x="496" y="156" width="152" height="48" rx="6" fill="rgba(198,40,40,0.08)" stroke="#c62828" stroke-width="1"/><text x="572.0" y="178.0" fill="#3b4252" font-size="12" font-weight="600" font-family="Pretendard, 'Noto Sans KR', 'Noto Sans CJK KR', sans-serif" text-anchor="middle">바이트 비교</text><text x="572.0" y="193.0" fill="#666666" font-size="8" font-weight="400" font-family="'Geist Mono', 'Noto Sans Mono CJK KR', monospace" text-anchor="middle">pass only if identical</text>
+<text x="16" y="256" fill="#666666" font-size="12" font-weight="500" font-family="Pretendard, 'Noto Sans KR', 'Noto Sans CJK KR', sans-serif" text-anchor="start">새 기능의 PR은 자기 케이스를 함께 추가하고, 기존 케이스를 모두 통과해야 병합된다.</text>
+<text x="16" y="276" fill="#666666" font-size="12" font-weight="500" font-family="Pretendard, 'Noto Sans KR', 'Noto Sans CJK KR', sans-serif" text-anchor="start">케이스는 공개 저장소(cubrid-testcases, cubvec/cubvec)에서 관리한다.</text>
+</svg>
+    </div>
+  </div>
+</body>
+</html>

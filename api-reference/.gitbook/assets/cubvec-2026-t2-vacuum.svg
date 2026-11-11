@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg viewBox="0 0 680 284" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="cubvec-2026-t2-vacuum-title cubvec-2026-t2-vacuum-desc" id="cubvec-2026-t2-vacuum-root">
+<title id="cubvec-2026-t2-vacuum-title">DELETE·UPDATE에서 vacuum까지</title>
+<desc id="cubvec-2026-t2-vacuum-desc">DELETE와 UPDATE가 엔트리에 제거 MVCCID를 표시하면, 그 버전을 보는 스냅샷이 사라진 뒤 vacuum이 노드를 삭제 상태로 바꾸고, 이웃 목록을 다시 이은 다음 선택적으로 공간을 회수한다.</desc>
+<defs>
+      <style>@import url('https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&amp;family=Geist:wght@400;500;600&amp;family=Geist+Mono:wght@400;500;600&amp;family=Noto+Serif:ital@0;1&amp;family=Noto+Sans+KR:wght@400;500;600&amp;family=Noto+Serif+KR:wght@400&amp;family=Noto+Sans+TC:wght@400;500;600&amp;family=Noto+Serif+TC:wght@400&amp;display=swap');
+      #cubvec-2026-t2-vacuum-root { font-family: Pretendard, 'Noto Sans KR', 'Noto Sans CJK KR', sans-serif; color: #3b4252; }
+      #cubvec-2026-t2-vacuum-root .diagram-container { width: 100%; overflow-x: auto; }</style><marker id="cubvec-2026-t2-vacuum-arrow" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto"><polygon points="0 0, 8 3, 0 6" fill="#666666"/></marker><marker id="cubvec-2026-t2-vacuum-arrow-ink" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto"><polygon points="0 0, 8 3, 0 6" fill="#3b4252"/></marker><marker id="cubvec-2026-t2-vacuum-arrow-accent" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto"><polygon points="0 0, 8 3, 0 6" fill="#c62828"/></marker></defs>
+<rect width="100%" height="100%" fill="#fbfaf7"/>
+<text x="16" y="28" fill="#3b4252" font-size="16" font-weight="700" font-family="Pretendard, 'Noto Sans KR', 'Noto Sans CJK KR', sans-serif" text-anchor="start">DELETE·UPDATE에서 vacuum까지</text>
+<line x1="160" y1="78" x2="184" y2="78" stroke="#666666" stroke-width="1.2" marker-end="url(#cubvec-2026-t2-vacuum-arrow)"/>
+<line x1="328" y1="78" x2="352" y2="78" stroke="#666666" stroke-width="1.2" marker-end="url(#cubvec-2026-t2-vacuum-arrow)"/>
+<line x1="496" y1="78" x2="520" y2="78" stroke="#666666" stroke-width="1.2" marker-end="url(#cubvec-2026-t2-vacuum-arrow)"/>
+<rect x="16" y="52" width="144" height="52" rx="6" fill="#fbfaf7"/><rect x="16" y="52" width="144" height="52" rx="6" fill="#ffffff" stroke="#3b4252" stroke-width="1"/><text x="88.0" y="76.0" fill="#3b4252" font-size="12" font-weight="600" font-family="Pretendard, 'Noto Sans KR', 'Noto Sans CJK KR', sans-serif" text-anchor="middle">① 제거 표시</text><text x="88.0" y="91.0" fill="#666666" font-size="8" font-weight="400" font-family="'Geist Mono', 'Noto Sans Mono CJK KR', monospace" text-anchor="middle">DML stamps del MVCCID</text>
+<rect x="184" y="52" width="144" height="52" rx="6" fill="#fbfaf7"/><rect x="184" y="52" width="144" height="52" rx="6" fill="#ffffff" stroke="#3b4252" stroke-width="1"/><text x="256.0" y="76.0" fill="#3b4252" font-size="12" font-weight="600" font-family="Pretendard, 'Noto Sans KR', 'Noto Sans CJK KR', sans-serif" text-anchor="middle">② vacuum 판정</text><text x="256.0" y="91.0" fill="#666666" font-size="8" font-weight="400" font-family="'Geist Mono', 'Noto Sans Mono CJK KR', monospace" text-anchor="middle">no snapshot sees it</text>
+<rect x="352" y="52" width="144" height="52" rx="6" fill="#fbfaf7"/><rect x="352" y="52" width="144" height="52" rx="6" fill="#ffffff" stroke="#3b4252" stroke-width="1"/><text x="424.0" y="76.0" fill="#3b4252" font-size="12" font-weight="600" font-family="Pretendard, 'Noto Sans KR', 'Noto Sans CJK KR', sans-serif" text-anchor="middle">③ 이웃 보수</text><text x="424.0" y="91.0" fill="#666666" font-size="8" font-weight="400" font-family="'Geist Mono', 'Noto Sans Mono CJK KR', monospace" text-anchor="middle">unlink the dead node</text>
+<rect x="520" y="52" width="144" height="52" rx="6" fill="#fbfaf7"/><rect x="520" y="52" width="144" height="52" rx="6" fill="#ffffff" stroke="#3b4252" stroke-width="1"/><text x="592.0" y="76.0" fill="#3b4252" font-size="12" font-weight="600" font-family="Pretendard, 'Noto Sans KR', 'Noto Sans CJK KR', sans-serif" text-anchor="middle">④ 공간 회수</text><text x="592.0" y="91.0" fill="#666666" font-size="8" font-weight="400" font-family="'Geist Mono', 'Noto Sans Mono CJK KR', monospace" text-anchor="middle">optional, by parameter</text>
+<line x1="44.0" y1="184" x2="132.0" y2="184" stroke="#3b4252" stroke-width="1"/>
+<line x1="88.0" y1="144" x2="88.0" y2="184" stroke="#3b4252" stroke-width="1"/>
+<circle cx="44.0" cy="184" r="7" fill="#ffffff" stroke="#3b4252" stroke-width="1"/>
+<circle cx="132.0" cy="184" r="7" fill="#ffffff" stroke="#3b4252" stroke-width="1"/>
+<circle cx="88.0" cy="144" r="7" fill="#ffffff" stroke="#3b4252" stroke-width="1"/>
+<circle cx="88.0" cy="184" r="7" fill="#fff6e5" stroke="#b8860b" stroke-width="1"/><text x="88.0" y="187" fill="#b8860b" font-size="8" font-weight="400" font-family="'Geist Mono', 'Noto Sans Mono CJK KR', monospace" text-anchor="middle">X</text>
+<line x1="212.0" y1="184" x2="300.0" y2="184" stroke="#3b4252" stroke-width="1"/>
+<line x1="256.0" y1="144" x2="256.0" y2="184" stroke="#3b4252" stroke-width="1"/>
+<circle cx="212.0" cy="184" r="7" fill="#ffffff" stroke="#3b4252" stroke-width="1"/>
+<circle cx="300.0" cy="184" r="7" fill="#ffffff" stroke="#3b4252" stroke-width="1"/>
+<circle cx="256.0" cy="144" r="7" fill="#ffffff" stroke="#3b4252" stroke-width="1"/>
+<circle cx="256.0" cy="184" r="7" fill="#c62828" fill-opacity="0.08" stroke="#c62828" stroke-width="1"/><text x="256.0" y="187" fill="#c62828" font-size="8" font-weight="400" font-family="'Geist Mono', 'Noto Sans Mono CJK KR', monospace" text-anchor="middle">X</text>
+<line x1="380.0" y1="184" x2="468.0" y2="184" stroke="#7a7f89" stroke-width="1" stroke-dasharray="3,2"/>
+<line x1="424.0" y1="144" x2="424.0" y2="184" stroke="#7a7f89" stroke-width="1" stroke-dasharray="3,2"/>
+<path d="M 380.0,191 L 380.0,202 Q 380.0,208 386.0,208 L 462.0,208 Q 468.0,208 468.0,202 L 468.0,191" fill="none" stroke="#2e7d32" stroke-width="1.2"/>
+<path d="M 431.0,144 L 462.0,144 Q 468.0,144 468.0,150 L 468.0,177" fill="none" stroke="#2e7d32" stroke-width="1.2"/>
+<circle cx="380.0" cy="184" r="7" fill="#ffffff" stroke="#3b4252" stroke-width="1"/>
+<circle cx="468.0" cy="184" r="7" fill="#ffffff" stroke="#3b4252" stroke-width="1"/>
+<circle cx="424.0" cy="144" r="7" fill="#ffffff" stroke="#3b4252" stroke-width="1"/>
+<circle cx="424.0" cy="184" r="7" fill="#c62828" fill-opacity="0.08" stroke="#c62828" stroke-width="1"/><text x="424.0" y="187" fill="#c62828" font-size="8" font-weight="400" font-family="'Geist Mono', 'Noto Sans Mono CJK KR', monospace" text-anchor="middle">X</text>
+<path d="M 548.0,191 L 548.0,202 Q 548.0,208 554.0,208 L 630.0,208 Q 636.0,208 636.0,202 L 636.0,191" fill="none" stroke="#2e7d32" stroke-width="1.2"/>
+<path d="M 599.0,144 L 630.0,144 Q 636.0,144 636.0,150 L 636.0,177" fill="none" stroke="#2e7d32" stroke-width="1.2"/>
+<circle cx="548.0" cy="184" r="7" fill="#ffffff" stroke="#3b4252" stroke-width="1"/>
+<circle cx="636.0" cy="184" r="7" fill="#ffffff" stroke="#3b4252" stroke-width="1"/>
+<circle cx="592.0" cy="144" r="7" fill="#ffffff" stroke="#3b4252" stroke-width="1"/>
+<circle cx="592.0" cy="184" r="7" fill="#f4f6f8" stroke="#7a7f89" stroke-width="1" stroke-dasharray="3,2"/>
+<text x="16" y="244" fill="#666666" font-size="12" font-weight="500" font-family="Pretendard, 'Noto Sans KR', 'Noto Sans CJK KR', sans-serif" text-anchor="start">제거 대기·삭제된 노드도 검색 경로로는 쓰이지만 결과에는 나오지 않는다. 보수는 죽은 노드를 가리키던</text>
+<text x="16" y="264" fill="#666666" font-size="12" font-weight="500" font-family="Pretendard, 'Noto Sans KR', 'Noto Sans CJK KR', sans-serif" text-anchor="start">이웃 목록을 다시 잇는다(초록). 공간 회수는 보수가 끝난 뒤에만 하며, 파라미터로 켜고 끈다.</text>
+</svg>

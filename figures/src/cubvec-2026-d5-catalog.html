@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>cubvec-2026-d5-catalog</title>
+  <link href="https://fonts.googleapis.com/css2?family=Geist+Mono:wght@400;500;600&family=Noto+Sans+KR:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: Pretendard, 'Noto Sans KR', 'Noto Sans CJK KR', sans-serif; background: #fbfaf7;
+           color: #3b4252; display: flex; justify-content: center; padding: 3rem 2rem; }
+    .frame { max-width: 720px; width: 100%; }
+    .eyebrow { font-family: 'Geist Mono', 'Noto Sans Mono CJK KR', monospace; font-size: 0.66rem;
+               letter-spacing: 0.18em; text-transform: uppercase; color: #666666; margin-bottom: 1rem; }
+    .diagram-container { width: 100%; overflow-x: auto; }
+    svg { width: 100%; min-width: 680px; display: block; }
+  </style>
+</head>
+<body>
+  <div class="frame">
+    <p class="eyebrow">Architecture · 2026 development report</p>
+    <div class="diagram-container">
+<svg viewBox="0 0 680 324" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="cubvec-2026-d5-catalog-title cubvec-2026-d5-catalog-desc">
+<title id="cubvec-2026-d5-catalog-title">카탈로그에 기록되는 인덱스 타입</title>
+<desc id="cubvec-2026-d5-catalog-desc">벡터 인덱스를 만들면 Root Class, System Catalog, _db_index에 인덱스 타입이 기록되고, 옵티마이저는 그 타입으로 B-tree 스캔과 벡터 인덱스 스캔을 구분한다.</desc>
+<defs><marker id="arrow" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto"><polygon points="0 0, 8 3, 0 6" fill="#666666"/></marker><marker id="arrow-ink" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto"><polygon points="0 0, 8 3, 0 6" fill="#3b4252"/></marker><marker id="arrow-accent" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto"><polygon points="0 0, 8 3, 0 6" fill="#c62828"/></marker></defs>
+<rect width="100%" height="100%" fill="#fbfaf7"/>
+<text x="16" y="28" fill="#3b4252" font-size="16" font-weight="700" font-family="Pretendard, 'Noto Sans KR', 'Noto Sans CJK KR', sans-serif" text-anchor="start">카탈로그에 기록되는 인덱스 타입</text>
+<rect x="232" y="52" width="208" height="184" rx="8" fill="none" stroke="#d8dee9" stroke-width="1.2" stroke-dasharray="4,3"/><text x="244" y="72" fill="#666666" font-size="12" font-weight="600" font-family="Pretendard, 'Noto Sans KR', 'Noto Sans CJK KR', sans-serif" text-anchor="start">카탈로그</text>
+<line x1="192" y1="144" x2="232" y2="144" stroke="#666666" stroke-width="1.2" marker-end="url(#arrow)"/>
+<line x1="440" y1="144" x2="456" y2="144" stroke="#666666" stroke-width="1.2" marker-end="url(#arrow)"/>
+<line x1="524" y1="168" x2="524" y2="208" stroke="#666666" stroke-width="1.2" marker-end="url(#arrow)"/>
+<line x1="616" y1="168" x2="616" y2="208" stroke="#666666" stroke-width="1.2" marker-end="url(#arrow)"/>
+<rect x="16" y="120" width="176" height="48" rx="6" fill="#fbfaf7"/><rect x="16" y="120" width="176" height="48" rx="6" fill="#ffffff" stroke="#3b4252" stroke-width="1"/><text x="104.0" y="142.0" fill="#3b4252" font-size="12" font-weight="600" font-family="Pretendard, 'Noto Sans KR', 'Noto Sans CJK KR', sans-serif" text-anchor="middle">CREATE INDEX</text><text x="104.0" y="157.0" fill="#666666" font-size="8" font-weight="400" font-family="'Geist Mono', 'Noto Sans Mono CJK KR', monospace" text-anchor="middle">USING hnsw</text>
+<rect x="248" y="84" width="176" height="44" rx="6" fill="#fbfaf7"/><rect x="248" y="84" width="176" height="44" rx="6" fill="#ffffff" stroke="#3b4252" stroke-width="1"/><text x="336.0" y="104.0" fill="#3b4252" font-size="12" font-weight="600" font-family="Pretendard, 'Noto Sans KR', 'Noto Sans CJK KR', sans-serif" text-anchor="middle">Root Class</text><text x="336.0" y="119.0" fill="#666666" font-size="8" font-weight="400" font-family="'Geist Mono', 'Noto Sans Mono CJK KR', monospace" text-anchor="middle">index type per attribute</text>
+<rect x="248" y="134" width="176" height="44" rx="6" fill="#fbfaf7"/><rect x="248" y="134" width="176" height="44" rx="6" fill="#ffffff" stroke="#3b4252" stroke-width="1"/><text x="336.0" y="154.0" fill="#3b4252" font-size="12" font-weight="600" font-family="Pretendard, 'Noto Sans KR', 'Noto Sans CJK KR', sans-serif" text-anchor="middle">System Catalog</text><text x="336.0" y="169.0" fill="#666666" font-size="8" font-weight="400" font-family="'Geist Mono', 'Noto Sans Mono CJK KR', monospace" text-anchor="middle">B-tree stats only</text>
+<rect x="248" y="184" width="176" height="44" rx="6" fill="#fbfaf7"/><rect x="248" y="184" width="176" height="44" rx="6" fill="#ffffff" stroke="#3b4252" stroke-width="1"/><text x="336.0" y="204.0" fill="#3b4252" font-size="12" font-weight="600" font-family="Pretendard, 'Noto Sans KR', 'Noto Sans CJK KR', sans-serif" text-anchor="middle">_db_index</text><text x="336.0" y="219.0" fill="#666666" font-size="8" font-weight="400" font-family="'Geist Mono', 'Noto Sans Mono CJK KR', monospace" text-anchor="middle">name · keys · comment</text>
+<rect x="456" y="120" width="208" height="48" rx="6" fill="#fbfaf7"/><rect x="456" y="120" width="208" height="48" rx="6" fill="#ffffff" stroke="#3b4252" stroke-width="1"/><text x="560.0" y="142.0" fill="#3b4252" font-size="12" font-weight="600" font-family="Pretendard, 'Noto Sans KR', 'Noto Sans CJK KR', sans-serif" text-anchor="middle">옵티마이저</text><text x="560.0" y="157.0" fill="#666666" font-size="8" font-weight="400" font-family="'Geist Mono', 'Noto Sans Mono CJK KR', monospace" text-anchor="middle">picks the scan by index type</text>
+<rect x="480" y="208" width="88" height="44" rx="6" fill="#fbfaf7"/><rect x="480" y="208" width="88" height="44" rx="6" fill="#ffffff" stroke="#3b4252" stroke-width="1"/><text x="524.0" y="228.0" fill="#3b4252" font-size="12" font-weight="600" font-family="Pretendard, 'Noto Sans KR', 'Noto Sans CJK KR', sans-serif" text-anchor="middle">B-tree</text><text x="524.0" y="243.0" fill="#666666" font-size="8" font-weight="400" font-family="'Geist Mono', 'Noto Sans Mono CJK KR', monospace" text-anchor="middle">scan</text>
+<rect x="572" y="208" width="92" height="44" rx="6" fill="#fbfaf7"/><rect x="572" y="208" width="92" height="44" rx="6" fill="rgba(198,40,40,0.08)" stroke="#c62828" stroke-width="1"/><text x="618.0" y="228.0" fill="#3b4252" font-size="12" font-weight="600" font-family="Pretendard, 'Noto Sans KR', 'Noto Sans CJK KR', sans-serif" text-anchor="middle">벡터 인덱스</text><text x="618.0" y="243.0" fill="#666666" font-size="8" font-weight="400" font-family="'Geist Mono', 'Noto Sans Mono CJK KR', monospace" text-anchor="middle">scan</text>
+<text x="16" y="284" fill="#666666" font-size="12" font-weight="500" font-family="Pretendard, 'Noto Sans KR', 'Noto Sans CJK KR', sans-serif" text-anchor="start">인덱스 타입이 카탈로그 세 곳에 함께 기록된다. B-tree 통계에는 B-tree 인덱스만 들어간다.</text>
+<text x="16" y="304" fill="#666666" font-size="12" font-weight="500" font-family="Pretendard, 'Noto Sans KR', 'Noto Sans CJK KR', sans-serif" text-anchor="start">옵티마이저는 이 타입을 보고 B-tree 스캔과 벡터 인덱스 스캔을 구분한다.</text>
+</svg>
+    </div>
+  </div>
+</body>
+</html>

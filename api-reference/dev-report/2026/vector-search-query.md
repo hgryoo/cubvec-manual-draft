@@ -16,11 +16,15 @@ LIMIT 10;
 
 옵티마이저는 `ORDER BY`의 거리 함수(또는 거리 연산자)가 벡터 인덱스의 컬럼과 메트릭에 맞고 `LIMIT`이 있으면 벡터 인덱스 스캔 플랜을 만든다. 벡터 인덱스는 결과를 거리 순서로 돌려주므로, 이 플랜에는 `ORDER BY`를 위한 정렬 단계를 붙이지 않는다. 플랜을 고를 때는 카탈로그에 기록된 인덱스 타입을 보고 B-tree 통계와 벡터 인덱스를 구분한다.
 
+<figure><img src="../../.gitbook/assets/cubvec-2026-q1-plan.svg" alt="벡터 인덱스 스캔 플랜"><figcaption><p>그림 1. 벡터 인덱스 스캔 플랜</p></figcaption></figure>
+
+*그림 설명 — 두 플랜을 나란히 놓았다. 왼쪽은 모든 행의 거리를 계산한 뒤 붉게 표시한 정렬을 거친다. 오른쪽은 벡터 인덱스 스캔이 가까운 순서로 행을 넘기므로 정렬 없이 바로 LIMIT으로 간다.*
+
 ### 실행기
 
 실행기는 플랜에 따라 디스크 기반 벡터 인덱스를 조회한다. 인덱스는 그래프를 탐색해 질의 벡터에 가까운 후보 k개를 거리 순서로 넘기고, 실행기는 각 후보에 세 가지를 확인한다. 삭제 표시된 엔트리인지, 질의의 스냅샷에서 보이는 행인지, `WHERE` 조건을 만족하는지다. 세 가지를 모두 통과한 행만 결과가 된다.
 
-<figure><img src="../../.gitbook/assets/cubvec-2026-search-flow.svg" alt="벡터 검색 질의의 실행 흐름"><figcaption><p>그림 3. 벡터 검색 질의의 실행 흐름</p></figcaption></figure>
+<figure><img src="../../.gitbook/assets/cubvec-2026-search-flow.svg" alt="벡터 검색 질의의 실행 흐름"><figcaption><p>그림 2. 벡터 검색 질의의 실행 흐름</p></figcaption></figure>
 
 *그림 설명 — 위에서 아래로 읽는다. 질의는 정렬 단계가 없는 벡터 인덱스 스캔 플랜으로 실행되고, 그래프 탐색이 가까운 후보 k개를 넘긴다. 붉게 표시한 단계에서 보이지 않는 행, 삭제 표시된 엔트리, 조건에 맞지 않는 행이 빠진다. 오른쪽 예처럼 빠진 행을 다시 채우지 않으므로, `LIMIT 10`이어도 결과는 7건일 수 있다.*
 
@@ -36,6 +40,10 @@ LIMIT 10;
 질의 벡터를 문자열로 보내면, 클라이언트는 float 배열을 `'[0.12, 0.33, ...]'` 문자열로 바꾸고, 브로커(CAS)는 그 문자열을 다시 파싱해 벡터 값으로 바꾼다. 측정해 보니 이 변환과 파싱이 질의마다 반복되었다. 그래서 CCI와 Python 드라이버에 벡터 타입을 추가해, 드라이버와 CAS 사이에서 차원과 float 배열을 그대로 주고받게 했다.
 
 대량 적재에는 `COPY … FROM STDIN WITH (FORMAT BINARY)` 구문을 추가했다. 클라이언트가 행을 바이너리 형식으로 보내면 서버가 바로 힙에 넣는다. 지원 타입은 INT, BIGINT, FLOAT, DOUBLE, VARCHAR, VECTOR이고, 현재는 Python 드라이버에서 쓸 수 있다.
+
+<figure><img src="../../.gitbook/assets/cubvec-2026-q2-driver.svg" alt="벡터를 서버로 보내는 세 경로"><figcaption><p>그림 3. 벡터를 서버로 보내는 세 경로</p></figcaption></figure>
+
+*그림 설명 — 줄마다 벡터가 서버로 가는 경로 하나다. 위 줄은 문자열로 바꿨다가 CAS에서 다시 파싱하는 비용(빨강)이 질의마다 생긴다. 가운데와 아래 줄은 float 배열을 바이너리로 그대로 보낸다(초록).*
 
 ### trace 정보와 성능 통계
 
@@ -61,6 +69,11 @@ HNSW 탐색 비용은 대부분 레벨 0에서 생기므로, 레벨 0 값을 따
 
 * 그래프 기반 인덱스에서는 노드 방문 한 번이 페이지 접근 한 번과 이어진다. 그래서 캐시와 벡터 압축이 성능을 좌우한다. 벡터 캐시를 적용하자 nytimes-256 데이터의 인덱스 빌드에서 데이터 페이지 접근이 약 267억 회에서 7,085만 회로 줄었다.
 * 인덱스 탐색이 끝난 뒤 결과 행을 힙에서 읽을 때, 레코드 안의 벡터 크기(float32 기준 256차원 약 1KB, 1536차원 약 6KB)만큼 힙 페이지 I/O가 늘어난다.
+
+<figure><img src="../../.gitbook/assets/cubvec-2026-q3-stats.svg" alt="trace와 statdump"><figcaption><p>그림 4. trace와 statdump</p></figcaption></figure>
+
+*그림 설명 — 왼쪽의 스캔과 빌드에서 나온 값이 두 곳으로 간다. 위의 trace는 질의 하나의 합계이고, 아래의 statdump는 다섯 묶음의 누적 카운터다. 붉게 표시한 레벨 0 묶음이 탐색 비용의 대부분을 설명한다.*
+
 ### 관련 이슈
 
 [CUBVEC-128](https://jira.cubrid.org/browse/CUBVEC-128), [CUBVEC-162](https://jira.cubrid.org/browse/CUBVEC-162), [CUBVEC-172](https://jira.cubrid.org/browse/CUBVEC-172), [CUBVEC-174](https://jira.cubrid.org/browse/CUBVEC-174), [CUBVEC-176](https://jira.cubrid.org/browse/CUBVEC-176), [CUBVEC-86](https://jira.cubrid.org/browse/CUBVEC-86), [CUBVEC-137](https://jira.cubrid.org/browse/CUBVEC-137)
